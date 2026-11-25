@@ -6,7 +6,7 @@ class Solution:
 
     def softmax(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
         mx = np.max(z)
-        z = z - mx*np.ones(len(z))
+        z = z - np.array(mx*np.ones(len(z)))
         expArr = np.exp(z)
         sumVal = np.sum(expArr)
         
