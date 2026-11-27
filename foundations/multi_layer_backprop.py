@@ -14,7 +14,7 @@ class Solution:
         y1Cap = np.maximum(0, z1)
 
         y2Cap = np.matmul(W2,y1Cap.T) + b2 
-        Loss = np.mean((y_true-y2Cap)**2)/n
+        Loss = np.mean((y_true-y2Cap)**2)
 
         print(y1Cap)
         
