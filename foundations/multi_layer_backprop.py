@@ -24,15 +24,15 @@ class Solution:
 
 
         flag = y1Cap > 0
-        sm = np.sum(W2, axis=0)
+        sm = np.sum(W2*(y_true-y2Cap), axis=0)
         sm = sm*flag
         smReshaped = sm.reshape(len(sm), 1)
         xReshaped = -np.array(x).reshape(1, len(x))
 
         print(np.matmul(smReshaped, xReshaped))
-        dW1 = 2*np.sum(y_true - y2Cap)*np.matmul(smReshaped, xReshaped)/n
+        dW1 = 2*np.matmul(smReshaped, xReshaped)/n
         dW2 = 2*np.matmul(diff2Reshaped, y1CapReshaped)/n
-        db1 = -2*np.sum(y_true-y2Cap)*sm/n
+        db1 = -2*sm/n
         db2 = -2*diff2/n
 
         return {"loss":np.round(Loss, 4), "dW1":np.round(dW1, 4), "dW2":np.round(dW2, 4), "db1":np.round(db1,4), "db2":np.round(db2,4)}
